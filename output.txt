@@ -1,1 +1,65 @@
+SOURCE CODE:
+
+#
+int i, max, sum;  
+#
+sum = 0;
+i = 1;
+get (max);
+while (i <  max)  {
+  sum = sum + i;
+  i  = i + 1; 
+}
+endwhile
+put (sum + max);
+
+
+OUTPUT:
+
+Token: invalid separator   Lexeme: #                   
+	<RAT23S> -> # <Opt Declaration List> # <Statement List>
+Token: keyword             Lexeme: int                 
+	<Opt Declaration List> -> <Declaration List>
+	<Declaration List> -> <Declaration> ; <Declaration List Prime>
+	<Declaration> -> <Qualifier> <IDs>
+	<Qualifier> -> int
+Token: identifier          Lexeme: i                   
+	<IDs> -> <identifier> <IDs Prime>
+Token: separator           Lexeme: ,                   
+	<IDsPrime> -> , <IDs>
+Token: identifier          Lexeme: max                 
+	<IDs> -> <identifier> <IDs Prime>
+Token: separator           Lexeme: ,                   
+	<IDsPrime> -> , <IDs>
+Token: identifier          Lexeme: sum                 
+	<IDs> -> <identifier> <IDs Prime>
+Token: separator           Lexeme: ;                   
+	<IDs Prime> -> Epsilon
+Token: invalid separator   Lexeme: #                   
+	<Declaration List Prime> -> Epsilon
+Token: identifier          Lexeme: sum                 
+	<Statement List> -> <Statement> <Statement List Prime>
+	<Statement> -> <Assign>
+	<Assign> -> <Identifier> = <Expression>;
+Token: operator            Lexeme: =                   
+Token: integer             Lexeme: 0                   
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+Error at line 4
+<identifier>, <integer>, '(', 'true' or 'false' is expected.
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+Error at line 1
+
+ ';' is expected
+	<Statement List Prime> -> Epsilon
+
+SYMBOL TABLE
+i 10000 int
+max 10001 int
+sum 10002 int
+
+INSTRUCTION TABLE
+1 POPM 10002
 
