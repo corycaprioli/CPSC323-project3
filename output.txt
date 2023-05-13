@@ -1,17 +1,17 @@
 SOURCE CODE:
 
 #
-int i, max, sum;  
+int num, greater, less, equal;
 #
-sum = 0;
-i = 1;
-get (max);
-while (i <  max)  {
-  sum = sum + i;
-  i  = i + 1; 
-}
+
+greater = num + less;
+less = greater - num;
+equal = greater - less;
+
+while(greater > num) 
+  greater = greater - equal;
 endwhile
-put (sum + max);
+if(less < num) put(equal) fi
 
 
 OUTPUT:
@@ -23,43 +23,168 @@ Token: keyword             Lexeme: int
 	<Declaration List> -> <Declaration> ; <Declaration List Prime>
 	<Declaration> -> <Qualifier> <IDs>
 	<Qualifier> -> int
-Token: identifier          Lexeme: i                   
+Token: identifier          Lexeme: num                 
 	<IDs> -> <identifier> <IDs Prime>
 Token: separator           Lexeme: ,                   
 	<IDsPrime> -> , <IDs>
-Token: identifier          Lexeme: max                 
+Token: identifier          Lexeme: greater             
 	<IDs> -> <identifier> <IDs Prime>
 Token: separator           Lexeme: ,                   
 	<IDsPrime> -> , <IDs>
-Token: identifier          Lexeme: sum                 
+Token: identifier          Lexeme: less                
+	<IDs> -> <identifier> <IDs Prime>
+Token: separator           Lexeme: ,                   
+	<IDsPrime> -> , <IDs>
+Token: identifier          Lexeme: equal               
 	<IDs> -> <identifier> <IDs Prime>
 Token: separator           Lexeme: ;                   
 	<IDs Prime> -> Epsilon
 Token: invalid separator   Lexeme: #                   
 	<Declaration List Prime> -> Epsilon
-Token: identifier          Lexeme: sum                 
+Token: identifier          Lexeme: greater             
 	<Statement List> -> <Statement> <Statement List Prime>
 	<Statement> -> <Assign>
 	<Assign> -> <Identifier> = <Expression>;
 Token: operator            Lexeme: =                   
-Token: integer             Lexeme: 0                   
+Token: identifier          Lexeme: num                 
 	<Expression> -> <Term> <Expression Prime>
 	<Term> -> <Factor> <Term Prime>
 	<Factor> -> <Primary>
-Error at line 4
-<identifier>, <integer>, '(', 'true' or 'false' is expected.
+	<Primary> -> <identifier> <Primary Prime>
+Token: operator            Lexeme: +                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> + <Term> <Expression Prime>
+Token: identifier          Lexeme: less                
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: separator           Lexeme: ;                   
+	<Primary Prime> -> Epsilon
 	<Term Prime> -> Epsilon
 	<Expression Prime> -> Epsilon
-Error at line 1
-
- ';' is expected
+Token: identifier          Lexeme: less                
+	<Statement List Prime> -> <Statement List>
+	<Statement List> -> <Statement> <Statement List Prime>
+	<Statement> -> <Assign>
+	<Assign> -> <Identifier> = <Expression>;
+Token: operator            Lexeme: =                   
+Token: identifier          Lexeme: greater             
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: operator            Lexeme: -                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> - <Term> <Expression Prime>
+Token: identifier          Lexeme: num                 
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: separator           Lexeme: ;                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+Token: identifier          Lexeme: equal               
+	<Statement List Prime> -> <Statement List>
+	<Statement List> -> <Statement> <Statement List Prime>
+	<Statement> -> <Assign>
+	<Assign> -> <Identifier> = <Expression>;
+Token: operator            Lexeme: =                   
+Token: identifier          Lexeme: greater             
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: operator            Lexeme: -                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> - <Term> <Expression Prime>
+Token: identifier          Lexeme: less                
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: separator           Lexeme: ;                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+Token: keyword             Lexeme: while               
+	<Statement List Prime> -> <Statement List>
+	<Statement List> -> <Statement> <Statement List Prime>
+	<Statement> -> <While>
+	<While> -> <while (<Condition>) <Statement>
+Token: separator           Lexeme: (                   
+Token: identifier          Lexeme: greater             
+	<Condition> -> <Expression> <Relop> <Expression>
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: operator            Lexeme: >                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+	<Relop> -> >
+Token: identifier          Lexeme: num                 
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: separator           Lexeme: )                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+	<Statement> -> <Assign>
+	<Assign> -> <Identifier> = <Expression>;
+Token: operator            Lexeme: =                   
+Token: identifier          Lexeme: greater             
+	<Expression> -> <Term> <Expression Prime>
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: operator            Lexeme: -                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> - <Term> <Expression Prime>
+Token: identifier          Lexeme: equal               
+	<Term> -> <Factor> <Term Prime>
+	<Factor> -> <Primary>
+	<Primary> -> <identifier> <Primary Prime>
+Token: separator           Lexeme: ;                   
+	<Primary Prime> -> Epsilon
+	<Term Prime> -> Epsilon
+	<Expression Prime> -> Epsilon
+Token: keyword             Lexeme: endwhile            
 	<Statement List Prime> -> Epsilon
 
 SYMBOL TABLE
-i 10000 int
-max 10001 int
-sum 10002 int
+num 10000 int
+greater 10001 int
+less 10002 int
+equal 10003 int
 
 INSTRUCTION TABLE
-1 POPM 10002
+1 PUSHM 10000
+2 PUSHM 10002
+3 ADD 
+4 POPM 10001
+5 PUSHM 10001
+6 PUSHM 10000
+7 SUB 
+8 POPM 10002
+9 PUSHM 10001
+10 PUSHM 10002
+11 SUB 
+12 POPM 10003
+13 LABEL 
+14 PUSHM 10001
+15 PUSHM 10000
+16 GRT 
+17 JUMPZ 23
+18 PUSHM 10001
+19 PUSHM 10003
+20 SUB 
+21 POPM 10001
+22 JUMP 13
 

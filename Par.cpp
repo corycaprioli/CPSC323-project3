@@ -295,9 +295,9 @@ void Par::StatementList(ifstream& infile, ofstream& outfile)
 
 void Par::StatementListPrime(ifstream& infile, ofstream& outfile)
 {
-	if (lexeme == "{" || token == "identifier" || lexeme == "if" || lexeme == "return" || lexeme == "print" || lexeme == "scan" || lexeme == "while")
+	if (lexeme == "{" || token == "identifier" || lexeme == "if" || lexeme == "return" || lexeme == "put" || lexeme == "get" || lexeme == "while")
 	{
-			outfile << "\t<Statement List Prime> -> <Statement List>\n";
+		outfile << "\t<Statement List Prime> -> <Statement List>\n";
 		StatementList(infile, outfile);
 	}
 	else
@@ -332,12 +332,12 @@ void Par::Statement(ifstream& infile, ofstream& outfile)
 			outfile << "\t<Statement> -> <Return>\n";
 		Return(infile, outfile);
 	}
-	else if (lexeme == "print")
+	else if (lexeme == "put")
 	{
 			outfile << "\t<Statement> -> <Print>\n";
 		Print(infile, outfile);
 	}
-	else if (lexeme == "read")
+	else if (lexeme == "get")
 	{
 			outfile << "\t<Statement> -> <Scan>\n";
 		Scan(infile, outfile);
@@ -350,7 +350,7 @@ void Par::Statement(ifstream& infile, ofstream& outfile)
 	else
 	{
 		printError(outfile);
-		outfile << "'compound', 'if', 'return', 'print', 'scan','while' keyword expects\n";
+		outfile << "'compound', 'if', 'return', 'print', 'scan','while' keyword expected\n";
 	}
 }
 
@@ -907,15 +907,16 @@ void Par::Primary(ifstream& infile, ofstream& outfile)
 			prevLexeme = prevLexeme + lexeme;
 			a = stoi(prevLexeme);
 		}
-		else
+		else {
 			a = stoi(lexeme);
+		}
 		gen_instr("PUSHI", a);
 		lexer(infile);
 		print(outfile);
 	}
 	else if (lexeme == "(")
 	{
-			outfile << "\t<Primary> -> (<Expression>)\n";
+		outfile << "\t<Primary> -> (<Expression>)\n";
 		lexer(infile);
 		print(outfile);
 		Expression(infile, outfile);

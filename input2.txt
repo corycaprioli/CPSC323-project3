@@ -1,1 +1,9 @@
+#
+int x, a, b, c;
+#
+
+x = a + b;
+
+if(b < c) b = x+a fi
+
 

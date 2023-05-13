@@ -1,1 +1,12 @@
+#
+int num, greater, less, equal;
+#
 
+greater = num + less;
+less = greater - num;
+equal = greater - less;
+
+while(greater > num) 
+  greater = greater - equal;
+endwhile
+if(less < num) put(equal) fi
